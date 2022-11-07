@@ -1,0 +1,7 @@
+flask
+flask-login
+flask-sqlalchemy
+python-dotenv
+pytest
+pytest-coverage
+pytest-flask
