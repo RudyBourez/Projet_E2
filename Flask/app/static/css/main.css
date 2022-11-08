@@ -8,14 +8,14 @@ body{
     height: 100vh;
 }
 .register_page{
-    width: 360px;
+    width: 50%;
     margin: auto;
 }
 .form{
     position: relative;
     z-index: 1;
     background: #ffff;
-    max-width: 360px;
+    max-width: 40%;
     margin: 20px auto 100px;
     padding: 45px;
 }
@@ -33,6 +33,10 @@ body{
 }
 .form p{
     text-align: center;
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 .submit{
     font-size: 15px;
@@ -65,8 +69,15 @@ nav{
     color: black;
     padding: 0 20px;
 }
-.form span{
+.form b span{
     display: block;
     text-align: center;
     margin-bottom: 10px;
+}
+.form label{
+    text-align: center;
+}
+
+#LiBsmt_Qual, #LiAge_house{
+    display: none;
 }

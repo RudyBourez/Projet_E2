@@ -38,7 +38,10 @@ def predict_post():
         elif var=="Cat_neighborhood":
             X_predict[var] = int(cat_neighborhood[dict_neighborhood[request.form["Neighborhood"]]])
         else:
-            X_predict[var]= int(request.form[var])
+            if var=="Overall Qual":
+                X_predict[var]=int(request.form["Overall_Qual"])
+            else:
+                X_predict[var]=int(request.form[var])
 
     pred = model.predict(pd.DataFrame(X_predict, index=[0]))
     return render_template('predict.html', data=int(pred))

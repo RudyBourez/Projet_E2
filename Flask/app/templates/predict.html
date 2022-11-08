@@ -5,65 +5,72 @@
         <div class="form">
             <form action="{{url_for('main.predict')}}" method="POST">
                 <label for="Age_house">
-                    Age de la maison: 
-                    <input type="number" name='Age_house' min="0" placeholder="Ex: 20">
+                    <p>Age de la maison<span class="Age_house">      ?</span></p>
+                    <span id="LiAge_house">
+                        Année actuelle - Année de construction
+                    </span>
+                    <input type="number" name='Age_house' min="0" placeholder="Ex: 20" required="required">
                 </label>
                 <label for="Total Bsmt SF">
-                    Surface de la cave: 
-                    <input type="number" name='Total Bsmt SF' min="0" placeholder="Ex: 50">
+                    <p>Surface de la cave</p>
+                    <input type="number" name='Total Bsmt SF' min="0" placeholder="Ex: 50" required="required">
                 </label>
                 <label for="1st Flr SF">
-                    Surface du premier étage:
-                    <input type="number" name='1st Flr SF' min="0" placeholder="Ex: 80">
+                    <p>Surface du premier étage</p>
+                    <input type="number" name='1st Flr SF' min="0" placeholder="Ex: 80" required="required">
                 </label>
                 <label for="Gr Liv Area">
-                    Surface habitable au sol:
-                    <input type="number" name='Gr Liv Area' min="0" placeholder="Ex: 160">
+                    <p>Surface habitable au sol</p>
+                    <input type="number" name='Gr Liv Area' min="0" placeholder="Ex: 160" required="required">
                 </label>
                 <label for="Garage Area">
-                    Surface du garage:
-                    <input type="number" name='Garage Area' min="0" placeholder="Ex: 20">
+                    <p>Surface du garage</p>
+                    <input type="number" name='Garage Area' min="0" placeholder="Ex: 20" required="required">
                 </label>
                 <label for="Garage Cars">
-                    Nombre de places dans le garage:
-                    <input type="number" name='Garage Cars' min="0" placeholder="Ex: 2">
+                    <p>Nombre de places dans le garage</p>
+                    <input type="number" name='Garage Cars' min="0" placeholder="Ex: 2" required="required">
                 </label>
-                <label for="Overall Qual">
-                    Qualité générale des finitions et des matérieux: 
-                    <input type="range" value="5" min="0" max="10" step="1" name="Overall Qual" id="Overall Qual">
-                    <span class="range-result" data-input="Overall Qual">5</span>
+                <label for="Overall_Qual">
+                    <p>Qualité générale des finitions et des matériaux</p>
+                    <b><span class="range-result" data-input="Overall_Qual">5</span></b>
+                    <input type="range" value="5" min="0" max="10" step="1" name="Overall_Qual" id="Overall_Qual" required="required">
                 </label>
                 <label for="Bath">
-                    Nombre de salle de bain: 
-                    <input type="number" name='Bath' min="0" placeholder="Ex: 1">
+                    <p>Nombre de salle de bain</p>
+                    <input type="number" name='Bath' min="0" placeholder="Ex: 1" required="required">
                 </label>
                 <label for="Bsmt Qual">
-                    Evaluez la hauteur de la maison:
+                    <p>Evaluez la qualité du sous-sol<span class="Bsmt_Qual">       ?</span></p>
+                    <li id="LiBsmt_Qual">
+                        <ul>Excellent : 100+ inches</ul>
+                        <ul>Good : entre 90 et 99 inches</ul>
+                        <ul>Average : entre 80 et 89 inches</ul>
+                        <ul>Fair : entre 70 et 79 inches</ul>
+                        <ul>Poor : -70 inches</ul>
+                    </li>
                     <select name="Bsmt Qual" id="Bsmt Qual">
-                        <option>Sélectionnez une valeur</option>
                         <option value="Excellent">Excellent</option>
                         <option value="Good">Good</option>
-                        <option value="Average">Average</option>
+                        <option selected="selected" value="Average">Average</option>
                         <option value="Fair">Fair</option>
                         <option value="Poor">Poor</option>
                     </select>
                 </label>
                 <label for="Kitchen Qual">
-                    Qualité des matériaux de la cuisine:
+                    <p>Qualité des matériaux de la cuisine</p>
                     <select name="Kitchen Qual" id="Kitchen Qual">
-                        <option>Sélectionnez une valeur</option>
                         <option value="Excellent">Excellent</option>
                         <option value="Good">Good</option>
-                        <option value="Average">Average</option>
+                        <option selected="selected" value="Average">Average</option>
                         <option value="Fair">Fair</option>
                         <option value="Poor">Poor</option>
                     </select>
                 </label>
                 <label for="Neighborhood">
-                    Quartier: 
+                    <p>Quartier:</p>
                     <select name="Neighborhood" id="Neighborhood">
-                        <option>Sélectionnez un quartier</option>
-                        <option value="Bloomington Heights">Bloomington Heights</option>
+                        <option selected="selected" value="Bloomington Heights">Bloomington Heights</option>
                         <option value="Bluestem">Bluestem</option>
                         <option value="Briardale">Briardale</option>
                         <option value="Brookside">Brookside</option>

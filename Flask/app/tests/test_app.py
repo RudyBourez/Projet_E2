@@ -24,11 +24,11 @@ def test_prediction(client):
     email = 'user@example.com'
     password = '123456'
     client.post('/login', data={'email' : email, 'password' : password})
-    response = client.post('/predict', data={'Year_Built':2000, 'Total_Bsmt_SF':50, '1st_Flr_SF':50,
-                                             'Gr_Liv_Area':50,'Garage_Area':20, 'Overall_Qual':5,
-                                             'Full_Bath':2, 'Exter_Qual':"TA",'Kitchen_Qual': "TA",
-                                             'Neighborhood': "NWAmes"})
-    assert b'<p> La maison vaut: 46534</p>' in response.data
+    response = client.post('/predict', data={'Age_house':20, 'Total Bsmt SF':50, '1st Flr SF':50,
+                                             'Gr Liv Area':120,'Garage Area':30, 'Garage Cars':2,
+                                             'Overall_Qual':5, 'Bath':2, 'Bsmt Qual':"Good",
+                                             'Kitchen Qual': "Excellent", 'Neighborhood': "Crawford"})
+    assert b'<p> La maison vaut: 69011</p>' in response.data
  
 # -----------------------------------V2---------------------------------------------
 
