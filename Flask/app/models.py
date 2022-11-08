@@ -26,3 +26,9 @@ class Prediction(db.Model):
     age_house = db.Column(db.Integer)
     bath = db.Column(db.Integer)
     estimated_price = db.Column(db.Integer)
+    
+    @classmethod
+    def add_prediction(cls, **pred_dict):
+        obj=cls(**pred_dict)
+        db.session.add(obj)
+        db.commit()
