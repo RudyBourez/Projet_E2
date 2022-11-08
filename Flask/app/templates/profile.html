@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Profile</h1>
+    <div id="predictions">
+        <table>
+            <thead>
+                <tr>
+                    <th>Neighborhood</th>
+                    <th>Garage Area</th>
+                    <th>Garage Cars</th>
+                    <th>1st Floor Surface</th>
+                    <th>Total Basement Surface</th>
+                    <th>Gr Liv Area</th>
+                    <th>Overall Quality</th>
+                    <th>Kitchen Quality</th>
+                    <th>Basement Quality</th>
+                    <th>Age House</th>
+                    <th>Bath</th>
+                    <th>Estimated Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        {% for col in row %}
+                            <td>{{ col }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

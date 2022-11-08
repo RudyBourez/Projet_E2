@@ -45,10 +45,9 @@ body{
     color: cornflowerblue;
 }
 
-h3{
+h1{
     text-align: center;
     margin: 50px 0;
-    font-size: 30px;
     color: white;
 }
 
@@ -80,4 +79,20 @@ nav{
 
 #LiBsmt_Qual, #LiAge_house{
     display: none;
+}
+table{
+    text-align:center;
+    width:70%;
+    margin: 0 auto;
+}
+td{
+    padding: 30px 0;
+    border: white 2px solid;
+    font-size: 16px;
+    width: 6%;
+}
+th{
+    border: white 2px solid;
+    color: white;
+    font-size: 17px;
 }

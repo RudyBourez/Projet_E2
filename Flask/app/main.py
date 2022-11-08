@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
 import pandas as pd
 from flask_login import login_required, current_user
-from app import model, cat_neighborhood
+from app import model, cat_neighborhood, db
 
 main =  Blueprint("main", __name__)
 
@@ -45,3 +45,13 @@ def predict_post():
 
     pred = model.predict(pd.DataFrame(X_predict, index=[0]))
     return render_template('predict.html', data=int(pred))
+
+@main.route('/profile', methods=["GET","POST"])
+@login_required
+def profile():
+    conn = db.session()
+    cursor = conn.execute(f'''SELECT b.neighborhood, b.garage_area, b.garage_cars, b.fst_flr_sf, b.total_bsmt_sf,
+                          b.gr_liv_area, b.overall_qual, b.kitchen_qual, b.bsmt_qual, b.age_house, b.bath, b.estimated_price
+                          FROM Users AS a JOIN Predictions AS b ON a.id=b.id_user WHERE a.id={current_user.id}''').cursor
+    data = cursor.fetchall()
+    return render_template('profile.html', data=data)
