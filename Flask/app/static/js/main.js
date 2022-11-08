@@ -4,7 +4,7 @@ rangeResults.forEach(function(rangeResult) {
     const rangeInput = document.querySelector('#' + rangeResult.dataset.input);
 
     if (rangeInput) {
-        rangeResult.innerHTML = rangeInput.ariaValueMax;
+        rangeResult.innerHTML = rangeInput.value;
 
         rangeInput.addEventListener('input', function() {
             rangeResult.innerHTML = rangeInput.value;

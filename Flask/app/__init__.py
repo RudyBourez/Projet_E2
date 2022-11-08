@@ -1,13 +1,15 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
-import joblib
+import pickle
+import json
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-model = joblib.load(open('model.joblib', 'rb'))
+cat_neighborhood = json.load(open("cat_neighborhood.json", "rb"))
+model = pickle.load(open('model.pkl', 'rb'))
 
 db = SQLAlchemy()    
 app = Flask(__name__)

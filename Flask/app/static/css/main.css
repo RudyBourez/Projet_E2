@@ -20,7 +20,7 @@ body{
     padding: 45px;
 }
 
-.form input{
+.form input, .form select{
     font-family: 'Times New Roman', Times, serif;
     outline: 1;
     background: #f2f2f2;

@@ -6,40 +6,90 @@
             <form action="{{url_for('main.predict')}}" method="POST">
                 <label for="Age_house">
                     Age de la maison: 
-                    <input type="number" name='Age_house' placeholder="Quelle est l'age de la maison?">
+                    <input type="number" name='Age_house' min="0" placeholder="Ex: 20">
                 </label>
-                <label for="Total_Bsmt_SF">
+                <label for="Total Bsmt SF">
                     Surface de la cave: 
-                    <input type="number" name='Total_Bsmt_SF' placeholder="Surface de la cave en m2">
+                    <input type="number" name='Total Bsmt SF' min="0" placeholder="Ex: 50">
                 </label>
-                <label for="1st_Flr_SF">
+                <label for="1st Flr SF">
                     Surface du premier étage:
-                    <input type="number" name='1st_Flr_SF' placeholder="Surface du 1er étage en m2">
+                    <input type="number" name='1st Flr SF' min="0" placeholder="Ex: 80">
                 </label>
-                <label for="Gr_Liv_Area">
+                <label for="Gr Liv Area">
                     Surface habitable au sol:
-                    <input type="number" name='Gr_Liv_Area' placeholder="Surface habitable en m2">
+                    <input type="number" name='Gr Liv Area' min="0" placeholder="Ex: 160">
                 </label>
-                <label for="Garage_Area">
+                <label for="Garage Area">
                     Surface du garage:
-                    <input type="number" name='Garage_Area' placeholder="Surface du garage en m2">
+                    <input type="number" name='Garage Area' min="0" placeholder="Ex: 20">
                 </label>
-                <label for="Garage_Cars">
+                <label for="Garage Cars">
                     Nombre de places dans le garage:
-                    <input type="number" name='Garage_Cars' placeholder="Nombre de places dans le garage">
+                    <input type="number" name='Garage Cars' min="0" placeholder="Ex: 2">
                 </label>
-                <label for="Overall_Qual">
+                <label for="Overall Qual">
                     Qualité générale des finitions et des matérieux: 
-                    <input type="range" value="5" min="0" max="10" step="1" name="Overall_Qual" id="Overall_Qual">
-                    <span class="range-result" data-input="Overall_Qual"></span>
+                    <input type="range" value="5" min="0" max="10" step="1" name="Overall Qual" id="Overall Qual">
+                    <span class="range-result" data-input="Overall Qual">5</span>
                 </label>
                 <label for="Bath">
                     Nombre de salle de bain: 
-                    <input type="number" name='Bath' placeholder="Nombre de salles de bain">
+                    <input type="number" name='Bath' min="0" placeholder="Ex: 1">
                 </label>
-                Qualité des matériaux extérieurs: <input type="text" name='Exter_Qual' placeholder=" Ex:Excellent, Gd:Good, TA:Average, Fa:Fair, Po:Poor"><br>
-                Qualité des matérieux de la cuisine: <input type="text" name='Kitchen_Qual' placeholder="Ex:Excellent, Gd:Good, TA:Average, Fa:Fair, Po:Poor"><br>
-                Quartier: <input type="text" name='Neighborhood' placeholder="Nom du quartier de Ames"><br>
+                <label for="Bsmt Qual">
+                    Evaluez la hauteur de la maison:
+                    <select name="Bsmt Qual" id="Bsmt Qual">
+                        <option>Sélectionnez une valeur</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Average">Average</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Poor">Poor</option>
+                    </select>
+                </label>
+                <label for="Kitchen Qual">
+                    Qualité des matériaux de la cuisine:
+                    <select name="Kitchen Qual" id="Kitchen Qual">
+                        <option>Sélectionnez une valeur</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Average">Average</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Poor">Poor</option>
+                    </select>
+                </label>
+                <label for="Neighborhood">
+                    Quartier: 
+                    <select name="Neighborhood" id="Neighborhood">
+                        <option>Sélectionnez un quartier</option>
+                        <option value="Bloomington Heights">Bloomington Heights</option>
+                        <option value="Bluestem">Bluestem</option>
+                        <option value="Briardale">Briardale</option>
+                        <option value="Brookside">Brookside</option>
+                        <option value="Clear Creek">Clear Creek</option>
+                        <option value="College Creek">College Creek</option>
+                        <option value="Crawford">Crawford</option>
+                        <option value="Edwards">Edwards</option>
+                        <option value="Gilbert">Gilbert</option>
+                        <option value="Iowa DOT and Rail Road">Iowa DOT and Rail Road</option>
+                        <option value="Meadow Village">Meadow Village</option>
+                        <option value="Mitchell">Mitchell</option>
+                        <option value="North Ames">North Ames</option>
+                        <option value="Northridge">Northridge</option>
+                        <option value="Northpark Villa">Northpark Villa</option>
+                        <option value="Northridge Heights">Northridge Heights</option>
+                        <option value="Northwest Ames">Northwest Ames</option>
+                        <option value="Old Town">Old Town</option>
+                        <option value="South & West of Iowa State University">South & West of Iowa State University</option>
+                        <option value="Sawyer">Sawyer</option>
+                        <option value="Sawyer West">Sawyer West</option>
+                        <option value="Somerset">Somerset</option>
+                        <option value="Stone Brook">Stone Brook</option>
+                        <option value="Timberland">Timberland</option>
+                        <option value="Veenker">Veenker</option>
+                    </select>
+                </label>
                 <input type="submit" value="predict" class="submit">
             </form>
             <p> La maison vaut: {{data}}</p>
