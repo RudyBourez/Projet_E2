@@ -10,6 +10,25 @@ class User(UserMixin, db.Model):
     last_name = db.Column(db.String(1000))
     predictions = db.relationship("Prediction", backref='Users', lazy=True)
     
+    @classmethod
+    def add_user(cls, **user):
+        obj=cls(**user)
+        db.session.add(obj)
+        db.session.commit()
+    
+    @classmethod
+    def get_all_user(cls):
+        conn = db.session()
+        cursor = conn.execute('SELECT * FROM Users').cursor
+        return cursor.fetchall()
+    
+    @classmethod
+    def drop_user_by_email(cls, email):
+        conn = db.session()
+        email = '"' + email + '"'
+        conn.execute(f'DELETE FROM Users WHERE email={email}')
+        db.session.commit()
+    
 class Prediction(db.Model):
     __tablename__ = 'Predictions'
     id = db.Column(db.Integer, primary_key=True)
@@ -40,3 +59,10 @@ class Prediction(db.Model):
                           gr_liv_area, overall_qual, kitchen_qual, bsmt_qual, age_house, bath, estimated_price
                           FROM Predictions WHERE id_user={user_id}''').cursor
         return cursor.fetchall()
+    
+    @classmethod
+    def delete_last_insert_test(cls):
+        conn = db.session()
+        conn.execute(''' DELETE FROM Predictions WHERE id=(SELECT Max(id) FROM Predictions)
+                              ''')
+        db.session.commit()

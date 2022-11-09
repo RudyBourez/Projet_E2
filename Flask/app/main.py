@@ -8,6 +8,7 @@ main =  Blueprint("main", __name__)
 
 @main.route('/')
 def index():
+    print(current_user)
     return render_template("index.html")
 
 @main.route('/predict')

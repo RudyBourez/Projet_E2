@@ -36,20 +36,22 @@ def signup_post():
     last_name = request.form.get('last_name') 
     password = request.form.get('password')
 
+    # Vérification que l'email est bien unique
     user = User.query.filter_by(email=email).first()
 
     if user: 
         flash('Email address already exists')
         return redirect(url_for('auth.signup'))
 
-    
-    new_user = User(email=email, first_name=first_name,
-                    last_name=last_name,
+    # Ajout de l'utisateur dans la base
+    User.add_user(email=email, first_name=first_name, last_name=last_name,
                     password=generate_password_hash(password, method='sha256'))
-
-    db.session.add(new_user)
-    db.session.commit()
-    return redirect(url_for('auth.login'))
+    
+    #Login du User
+    user = User.query.filter_by(email=email).first()
+    login_user(user)
+    
+    return redirect(url_for('main.predict'))
 
 
 @auth.route('/logout')
