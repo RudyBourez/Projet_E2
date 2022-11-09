@@ -31,4 +31,4 @@ class Prediction(db.Model):
     def add_prediction(cls, **pred_dict):
         obj=cls(**pred_dict)
         db.session.add(obj)
-        db.commit()
+        db.session.commit()

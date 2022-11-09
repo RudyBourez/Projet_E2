@@ -23,7 +23,7 @@ def predict_post():
     dict_neighborhood = {"Bloomington Heights": "Blmngtn", "Bluestem": "Blueste", "Briardale": "BrDale", "Brookside": "BrkSide",
                          "Clear Creek": "ClearCr", "College Creek": "CollgCr", "Crawford": "Crawfor", "Edwards": "Edwards",
                          "Gilbert": "Gilbert", "Iowa DOT and Rail Road": "IDOTRR", "Meadow Village": "MeadowV", "Mitchell": "Mitchel",
-                         "North Ames": "Names", "Northridge": "NoRidge", "Northpark Villa": "NPkVill", "Northridge Heights": "NridgHt",
+                         "North Ames": "NAmes", "Northridge": "NoRidge", "Northpark Villa": "NPkVill", "Northridge Heights": "NridgHt",
                          "Northwest Ames": "NWAmes", "Old Town": "OldTown", "South & West of Iowa State University": "SWISU",
                          "Sawyer": "Sawyer", "Sawyer West": "SawyerW", "Somerset": "Somerst", "Stone Brook": "StoneBr",
                          "Timberland": "Timber", "Veenker": "Veenker"}
@@ -48,21 +48,12 @@ def predict_post():
     pred = model.predict(pd.DataFrame(X_predict, index=[0]))
     
     # Génére les données pour les introduire dans la Table Prediction
-    pred_dict = {}
-    pred_dict["neighborhood"] = request.form["Neighborhood"]
-    pred_dict["garage_area"] = int(request.form["Garage Area"])
-    pred_dict["garage_cars"] = int(request.form["Garage Cars"])
-    pred_dict["fst_flr_sf"] = int(request.form["1st Flr SF"])
-    pred_dict["total_bsmt_sf"] = int(request.form["Total Bsmt SF"])
-    pred_dict["gr_liv_area"] = int(request.form["Gr Liv Area"])
-    pred_dict["overall_qual"] = int(request.form["Overall_Qual"])
-    pred_dict["kitchen_qual"] = request.form["Kitchen Qual"]
-    pred_dict["bsmt_qual"] = request.form["Bsmt Qual"]
-    pred_dict["age_house"] = int(request.form["Age_house"])
-    pred_dict["bath"] = int(request.form["Bath"])
-    pred_dict["estimated_price"] = pred[0]
-    print(pred_dict)
-    Prediction.add_prediction(pred_dict)
+    Prediction.add_prediction(neighborhood=request.form["Neighborhood"], garage_area=int(request.form["Garage Area"]),
+                              garage_cars=int(request.form["Garage Cars"]), fst_flr_sf=int(request.form["1st Flr SF"]),
+                              total_bsmt_sf=int(request.form["Total Bsmt SF"]), gr_liv_area=int(request.form["Gr Liv Area"]),
+                              overall_qual=int(request.form["Overall_Qual"]), kitchen_qual=request.form["Kitchen Qual"],
+                              bsmt_qual=request.form["Bsmt Qual"], age_house=int(request.form["Age_house"]),
+                              bath=int(request.form["Bath"]), estimated_price=int(pred), id_user=current_user.id)
     
     return render_template('predict.html', data=int(pred))
 
