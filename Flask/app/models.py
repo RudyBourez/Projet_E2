@@ -32,3 +32,11 @@ class Prediction(db.Model):
         obj=cls(**pred_dict)
         db.session.add(obj)
         db.session.commit()
+    
+    @classmethod
+    def get_prediction_by_user(cls, user_id):
+        conn = db.session()
+        cursor = conn.execute(f'''SELECT neighborhood, garage_area, garage_cars, fst_flr_sf, total_bsmt_sf,
+                          gr_liv_area, overall_qual, kitchen_qual, bsmt_qual, age_house, bath, estimated_price
+                          FROM Predictions WHERE id_user={user_id}''').cursor
+        return cursor.fetchall()

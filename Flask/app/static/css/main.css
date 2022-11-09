@@ -8,14 +8,46 @@ body{
     height: 100vh;
 }
 .register_page{
-    width: 50%;
+    width: 100%;
     margin: auto;
 }
+
+h1{
+    text-align: center;
+    margin: 50px 0;
+    color: white;
+}
+
+/* NavBar */
+
+nav{
+    padding: 30px 0;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.flexbox{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.flexbox div{
+    max-width: 50%;
+}
+.flexbox div a{
+    font-size: 25px;
+    color: black;
+    padding: 0 20px;
+}
+
+/* Formulaire*/
 .form{
     position: relative;
     z-index: 1;
     background: #ffff;
-    max-width: 40%;
+    max-width: 25%;
     margin: 20px auto 100px;
     padding: 45px;
 }
@@ -26,7 +58,7 @@ body{
     background: #f2f2f2;
     width: 100%;
     border: 0;
-    margin: 0 0 15px;
+    margin: 0 0 10px;
     padding: 15px;
     box-sizing: border-box;
     font-size: 14px;
@@ -45,29 +77,6 @@ body{
     color: cornflowerblue;
 }
 
-h1{
-    text-align: center;
-    margin: 50px 0;
-    color: white;
-}
-
-nav{
-    padding: 30px 0;
-    background-color: white;
-}
-.flexbox{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.flexbox div{
-    max-width: 50%;
-}
-.flexbox div a{
-    font-size: 25px;
-    color: black;
-    padding: 0 20px;
-}
 .form b span{
     display: block;
     text-align: center;
@@ -80,19 +89,32 @@ nav{
 #LiBsmt_Qual, #LiAge_house{
     display: none;
 }
+
+/* Profile.html */
 table{
     text-align:center;
-    width:70%;
+    width:90%;
     margin: 0 auto;
 }
 td{
     padding: 30px 0;
-    border: white 2px solid;
+    border: cornflowerblue 2px solid;
     font-size: 16px;
     width: 6%;
 }
 th{
-    border: white 2px solid;
-    color: white;
+    border: cornflowerblue 2px solid;
+    color: cornflowerblue;
     font-size: 17px;
+    /*position:sticky;*/
+}
+#predictions{
+    width:80%;
+    margin: auto;
+    background-color: white;
+    padding: 40px 0;
+    min-height: 50%;
+    overflow-y: scroll;
+    border-radius: 10px;
+    box-shadow: rgb(55, 55, 243) 5px 5px 5px;
 }
