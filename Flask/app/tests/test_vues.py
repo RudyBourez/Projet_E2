@@ -58,7 +58,7 @@ def test_predict(client):
     length_3 = len(predictions)
     assert length_3 == length_2 + 1
     # Test value in template
-    assert b'La maison vaut: 69011' in response.data
+    assert b'La maison vaut: 69880' in response.data
     # Cleaning of the insertion with the test
     Prediction.delete_last_insert_test()
     predictions = Prediction.get_prediction_by_user(current_user.id)
@@ -90,8 +90,8 @@ def test_signup(client):
     response = client.post('/signup', data={'email': 'admin2@example.com','first_name':'test', 'last_name':'test', 'password': '1318641'}, follow_redirects=True)
     length_users_3 = len(User.get_all_user())
     assert length_users_3 == length_users_2 + 1
+    assert hasattr(current_user, "id")
     assert response.request.path == '/predict'
     User.drop_user_by_email(email="admin2@example.com")
     length_users_4 = len(User.get_all_user())
     assert length_users_4 == length_users_2
-    
