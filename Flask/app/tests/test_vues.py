@@ -58,7 +58,7 @@ def test_predict(client):
     length_3 = len(predictions)
     assert length_3 == length_2 + 1
     # Test value in template
-    assert b'La maison vaut: 69011'
+    assert b'La maison vaut: 69011' in response.data
     # Cleaning of the insertion with the test
     Prediction.delete_last_insert_test()
     predictions = Prediction.get_prediction_by_user(current_user.id)
